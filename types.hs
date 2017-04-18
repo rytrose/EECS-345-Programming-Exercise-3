@@ -9,8 +9,11 @@ flatten l =
     then
       (head l) : (flatten (tail l))
   else
-      (head (flatten (getList (head l)))) : (flatten (tail l))
-
+    if (null (getList (head l)))
+      then
+        (flatten (tail l))
+    else
+      (merge (flatten (getList (head l))) (flatten (tail l)))
 
 myreverse :: [NestedList a] -> [NestedList a]
 myreverse l =
@@ -18,7 +21,7 @@ myreverse l =
     then
       []
     else
-      if (isSubList (head l))
+      if (isSubList (last l))
         then
           (SubList (myreverse (getList (last l)))) : (myreverse (init l))
         else
@@ -35,4 +38,12 @@ isSubList (SubList _) = True
 isSubList _ = False
 
 getList :: NestedList a -> [NestedList a]
-getList sl = (getSlHead sl) : (getSlTail sl)
+getList (SubList a) = a
+
+merge :: [NestedList a] -> [NestedList a] -> [NestedList a]
+merge nl1 nl2 =
+  if (null nl1)
+    then
+      nl2
+  else
+    (head nl1) : (merge (tail nl1) nl2)
