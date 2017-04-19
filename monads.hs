@@ -15,9 +15,9 @@ check x =
   else
     False
 
--- checklist :: [a] -> (a -> Bool) -> Maybe [a]
---
--- checklist x check =
---   if (null x) then
---     []
---   else
+checklist :: [a] -> (a -> Bool) -> Maybe [a]
+checklist x check =
+  if (null x) then
+    Just ([])
+  else
+    appendIf (head x) (checklist (tail x) check) check
