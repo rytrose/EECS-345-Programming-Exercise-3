@@ -1,3 +1,6 @@
+-- Ryan Rose, rtr29
+-- Programming Exercise Part 3, Part 2: Haskell Types
+
 data NestedList a = Element a | SubList [NestedList a] deriving (Show)
 
 flatten :: [NestedList a] -> [NestedList a]
@@ -27,6 +30,7 @@ myreverse l =
         else
           (last l) : (myreverse (init l))
 
+-- abstraction
 getSlHead (SubList sl) = (head sl)
 getSlTail (SubList sl) = (tail sl)
 getSlInit (SubList sl) = (init sl)
@@ -37,6 +41,7 @@ isElement _ = False
 isSubList (SubList _) = True
 isSubList _ = False
 
+-- helper to extract the native Haskell list of a SubList
 getList :: NestedList a -> [NestedList a]
 getList (SubList a) = a
 

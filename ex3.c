@@ -1,3 +1,6 @@
+// Ryan Rose, rtr29
+// Programming Exercise Part 3, Part 1: C
+
 #include <stdio.h>
 #include <stdlib.h>
 

@@ -1,3 +1,6 @@
+-- Ryan Rose, rtr29
+-- Programming Exercise Part 3, Part 3: Haskell Monads
+
 import Data.Maybe
 
 appendIf :: a -> Maybe [a] -> (a -> Bool) -> Maybe [a]
